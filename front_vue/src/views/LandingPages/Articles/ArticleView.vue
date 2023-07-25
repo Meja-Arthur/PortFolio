@@ -12,6 +12,7 @@ import bg0 from "@/assets/img/office-dark.jpg";
 import Typed from "typed.js";
 
 //sections
+import Fetching from "./Sections/Fetching.vue";
 
 
 
@@ -87,6 +88,11 @@ onUnmounted(() => {
       </div>
     </div>
   </header>
+
+  <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
+     <Fetching/>
+ 
+  </div>
 
   <DefaultFooter />
 

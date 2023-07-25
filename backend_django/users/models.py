@@ -4,10 +4,14 @@ import uuid
 
 from django.core.files import File
 from django.db import models
+from tinymce.models import HTMLField
+
+
 
 # Create your models here.
 
 class User(models.Model):
+    
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(unique=True)
@@ -59,3 +63,16 @@ class User(models.Model):
         thumbnail = File(thumb_io, name=image.name)
         
         return thumbnail
+    
+
+
+
+class Article(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(max_length=200)
+    content = HTMLField('Content')
+    date_added = models.DateTimeField(auto_now_add=True)
+    
+    
+    def __str__(self):
+        return self.title

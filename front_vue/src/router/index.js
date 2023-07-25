@@ -5,6 +5,7 @@ import profile1 from "../views/LandingPages/Profile/profile1.vue"
 import profile2 from "../views/LandingPages/Profile/profile2.vue"
 import profile3 from "../views/LandingPages/Profile/profile3.vue"
 import profile4 from "../views/LandingPages/Profile/profile4.vue"
+import ArticleDetails from "../views/LandingPages/ArticleDetails/ArticleDetails.vue"
 
 import ContactView from "../views/LandingPages/ContactUs/ContactView.vue";
 import AuthorView from "../views/LandingPages/Author/AuthorView.vue";
@@ -43,6 +44,12 @@ const router = createRouter({
       path: "/landing-pages/about-us",
       name: "about",
       component: AboutView,
+    },
+
+    {
+      path: "/landing-pages/articledetails/article/:id",
+      name: "article-details",
+      component: ArticleDetails,
     },
 
 
