@@ -1,15 +1,20 @@
 <template>
+  
   <div>
-    <h1>{{ article.title }}</h1>
+    <h3>{{ article.title }}</h3>
 
     <!-- Add a link to trigger the download -->
+
     <a :href="downloadLink" download target="_blank" v-if="downloadLink">
       Download Article as Word Document
     </a>
+
     <button @click="downloadDocument" v-else>
       Generate Download Link
     </button>
+
   </div>
+
 </template>
 
 <script>
@@ -39,8 +44,7 @@ export default {
         });
     },
     downloadDocument() {
-      // Remove HTML tags from the content using a regular expression
-      const plainTextContent = this.article.content.replace(/<[^>]+>/g, '');
+      const plainTextContent = this.article.content.replace(/<[^>]+>/g, '');// removing  the HTML tags 
 
       // Make a GET request to the correct endpoint to generate the Word document
       axios

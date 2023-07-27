@@ -5,7 +5,6 @@ import TransparentBlogCard from "@/examples/cards/blogCards/TransparentBlogCard.
 
 
 
-
 </script>
 
 

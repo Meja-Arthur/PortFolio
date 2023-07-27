@@ -31,9 +31,11 @@ class ArticleDetailsView(APIView):
 
 
 class DownloadArticleView(APIView):
+# Here we are getting the particular article using the article id 
     def get(self, request, article_id):
+        
         article_content = request.GET.get('content', '')
-        # Get the plain text content from the request query parameters
+        # getting the content of the article like the article body 
 
         # Remove HTML tags from the content using a regular expression
         import re
@@ -41,6 +43,7 @@ class DownloadArticleView(APIView):
 
         # Generate the Word document
         document = Document()
+        #get the article object from the database 
         article = get_object_or_404(Article, id=article_id)  # Import the get_object_or_404 function
         document.add_heading(article.title, level=1)  # Add the title as heading
         document.add_paragraph(plain_text_content)  # Add the plain text content as a paragraph

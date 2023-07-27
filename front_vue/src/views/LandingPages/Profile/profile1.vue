@@ -98,6 +98,8 @@ onMounted(() => {
 
 
     <Posts />
+
+    
   </div>
 
 

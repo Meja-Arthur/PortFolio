@@ -1,20 +1,16 @@
-<template>
-  <div>
-    <h3>Some Of Our Written Articles</h3>
-    <ul>
-      <li v-for="article in latestarticles" :key="article.id">
-        <router-link :to="`/landing-pages/articledetails/article/${article.id}`">
-          {{ article.title }}
-        </router-link>
-      </li>
-    </ul>
-  </div>
-  </template>
 
 <script>
 import axios from 'axios'
+import TransparentBlogCard from "@/examples/cards/blogCards/TransparentBlogCard.vue";
+import bg0 from "@/assets/img/pen.jpg";
 
 export default {
+  components: {
+    TransparentBlogCard,
+
+  },
+
+  
 
   data() {
     return {
@@ -47,6 +43,27 @@ export default {
 }
 </script>
 
-<style>
+<template>
+  <section class="pb-5 position-relative bg-gradient-gray mx-n3">
+    <div class="container">
 
-</style>
+      <div class="row">
+        <div class="col-lg-6">
+          <h2 class="mb-5">Check my latest Articles</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-sm-6" v-for="article in latestarticles" :key="article.id">
+          <router-link :to="`/landing-pages/articledetails/article/${article.id}`">
+            <TransparentBlogCard
+              :image="bg0" 
+              :title="article.title" 
+            />
+          </router-link>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</template>
