@@ -1,57 +1,51 @@
-
-
-
 from django.http import Http404
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.decorators import action
 from.models import Article
 from.serializers import ArticleSerializer
 from django.http import FileResponse
 from docx import Document
+from io import BytesIO
 from django.views.generic import View
 
 class ArticleListView(APIView):
     def get(self, request, format=None):
         articles = Article.objects.all()
-        serilizer = ArticleSerializer(articles, many=True)
-        return Response(serilizer.data)
+        serializer = ArticleSerializer(articles, many=True)
+        return Response(serializer.data)
     
 
 class ArticleDetailsView(APIView): 
-    # we are using the get_object function that 
     def get_object(self, pk): 
         try:
             return Article.objects.get(pk=pk)
         except Article.DoesNotExist:
             raise Http404
               
-    
-    def get(self, request, pk,format=None):
+    def get(self, request, pk, format=None):
         article = self.get_object(pk)
         serializer = ArticleSerializer(article)
         return Response(serializer.data)
-    
 
 
-
-
-# views.py
-from django.http import FileResponse
-from docx import Document
-from django.views.generic import View
-
-class DownloadArticleView(View):
+class DownloadArticleView(APIView):
     def get(self, request, article_id):
-        # Retrieve the article content from the database or wherever it's stored
-        article_content = "The content of the article goes here."
+        article_content = request.GET.get('content', '')
+        # Get the plain text content from the request query parameters
+
+        # Remove HTML tags from the content using a regular expression
+        import re
+        plain_text_content = re.sub('<[^>]+>', '', article_content)
 
         # Generate the Word document
         document = Document()
-        document.add_heading('Article Title', level=1)
-        document.add_paragraph(article_content)
+        article = get_object_or_404(Article, id=article_id)  # Import the get_object_or_404 function
+        document.add_heading(article.title, level=1)  # Add the title as heading
+        document.add_paragraph(plain_text_content)  # Add the plain text content as a paragraph
 
         # Save the Word document to a BytesIO object (in-memory file)
-        from io import BytesIO
         output = BytesIO()
         document.save(output)
         output.seek(0)
@@ -60,12 +54,3 @@ class DownloadArticleView(View):
         response = FileResponse(output, content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
         response['Content-Disposition'] = f'attachment; filename=article_{article_id}.docx'
         return response
-
-    
-        
-    
-
-
-
-    
-
