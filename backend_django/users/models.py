@@ -70,6 +70,7 @@ class User(models.Model):
 class Article(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=200)
+    description = models.TextField( max_length=150,default='', blank=False, null=False)
     content = HTMLField('Content')
     date_added = models.DateTimeField(auto_now_add=True)
     
