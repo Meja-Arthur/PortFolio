@@ -18,6 +18,7 @@
     "vue": "3.2.36",
     "vue-clipboard3": "2.0.0",
     "vue-count-to": "1.0.13",
+    "vue-image-kit": "^0.2.2",
     "vue-prism-editor": "2.0.0-alpha.2",
     "vue-router": "4.0.15"
   },

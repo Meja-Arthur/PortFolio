@@ -3,19 +3,16 @@
 import axios from 'axios'
 import TransparentBlogCard from "@/examples/cards/blogCards/TransparentBlogCard.vue";
 
-import myImage from '@/assets/img/pen.jpg';
 
 
 export default {
   components: {
     TransparentBlogCard,
-
   },
 
   data() {
     return {
       latestarticles: [],
-      myImage: myImage
     }
     
   },
@@ -50,7 +47,7 @@ export default {
 
       <div class="row">
         <div class="col-lg-6">
-          <h2 class="mb-5">Check my latest Articles</h2>
+          <h3 class="mb-5">Check my latest Articles</h3>
         </div>
       </div>
 
@@ -61,7 +58,9 @@ export default {
           :to="`/landing-pages/articledetails/article/${article.id}`"
           class="col-lg-3 col-sm-6 my-card"
         >
-          <img :src="myImage" alt="My Image" class="my-image">
+            <div class="my-image">
+                <img :src="article.get_image"  />
+            </div>
 
           <div class="article-title">{{ article.title }}</div>
           <p>{{ article.description }}</p>
@@ -88,9 +87,9 @@ export default {
 
   cursor: pointer;
   
-   overflow: hidden;
-  
-  margin: 15px;
+  overflow: hidden;
+  margin-left: auto;
+  margin: 15px 15px 35px;
   margin-bottom: 20px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -103,10 +102,17 @@ export default {
 
 .my-image {
   margin-right: 2px;
-  margin: 0;
  
-  width: 250px; 
-  height: auto; 
+  overflow: hidden;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  height: 300px; 
+}
+.my-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .article-title {
@@ -114,7 +120,7 @@ export default {
   font-size: 15px;
   font-weight: bold;
   color: #333; 
-  margin-top: 10px; 
+  margin-top: 15px; 
 }
 .my-card p {
   
@@ -122,4 +128,5 @@ export default {
   color: #333;
   
 }
+
 </style>

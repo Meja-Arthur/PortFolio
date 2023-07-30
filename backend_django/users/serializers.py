@@ -11,5 +11,7 @@ class ArticleSerializer(serializers.ModelSerializer):
             "title",
             "description",
             "content",
+            "get_image",
+            "get_thumbnail",
         )
         
