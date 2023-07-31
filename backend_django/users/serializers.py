@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from .models import Article
+from .models import Article, User
 
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,7 +11,23 @@ class ArticleSerializer(serializers.ModelSerializer):
             "title",
             "description",
             "content",
+            "author",
             "get_image",
             "get_thumbnail",
         )
+        
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "email",
+            "name",
+            "bio",
+            "position",
+            "get_image",
+            "get_thumbnail",
+        )
+
+        
         

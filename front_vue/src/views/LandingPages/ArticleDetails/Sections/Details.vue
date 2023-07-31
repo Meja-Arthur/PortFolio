@@ -87,6 +87,10 @@
   transition-duration: 0.4s;
 }
 
+.button:hover {
+    color: white;
+}
+
 
 .title{
 

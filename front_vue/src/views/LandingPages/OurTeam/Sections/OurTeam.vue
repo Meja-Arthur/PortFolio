@@ -1,4 +1,4 @@
-<script setup>
+<!---<script setup>
 // example component
 import HorizontalTeamCard from "@/examples/cards/teamCards/HorizontalTeamCard.vue";
 
@@ -29,10 +29,12 @@ onMounted(async () => {
 const navigateToUserProfile = (userId) => {
   router.push({ name: 'userprofile', params: { id: userId } });
 };
-</script>
+</script>--->
+
+
 
 <template>
-  <section class="pb-5 position-relative bg-gradient-dark mx-n3">
+  <section class="pb-10 position-relative bg-gradient-dark mx-n3">
     <div class="container">
 
       <div class="row">
@@ -43,56 +45,74 @@ const navigateToUserProfile = (userId) => {
           </p>
         </div>
       </div>
-
+    
       <div class="row">
-        <div class="col-lg-6 col-12">
-          <RouterLink :to="{name:'profile1'}">
-          <HorizontalTeamCard
-            class="mt-4"
-            :image="emma"
-            :profile="{ name: 'Nadine Anyango', link: 'javascript:;' }"
-            :position="{ label: 'Cheif Editor', color: 'success' }"
-          />
-        </RouterLink>
-        </div>
-        <div class="col-lg-6 col-12">
-          <RouterLink :to="{name:'profile2'}">
-          <HorizontalTeamCard
-            class="mt-lg-4 mt-5"
-            :image="william"
-            :profile="{ name: 'Tony Ogembo', link: 'javascript:;' }"
-            :position="{ label: 'C.E.O', color: 'success' }"
-
-          />
-        </RouterLink>
-        </div>
-      </div>
-
-      <div class="row mt-4">
-        <div class="col-lg-6 col-12">
-          <RouterLink :to="{name:'profile3'}">
-          <HorizontalTeamCard
-            class="mt-4 z-index-2"
-            :image="ivana"
-            :profile="{ name: 'Patrick ALmeida', link: 'javascript:;' }"
-            :position="{ label: 'Cheif Editor on Social Health articles ', color: 'success' }"
-        
-          />
-        </RouterLink>
-        </div>
-        <div class="col-lg-6 col-12">
-          <RouterLink :to="{name:'profile4'}">
-          <HorizontalTeamCard
-            class="mt-lg-4 mt-5 z-index-2"
-            :image="marquez"
-            :profile="{ name: 'Emmanuel Ogembo', link: 'javascript:;' }"
-            :position="{ label: 'CHief Editor on Technology Articles', color: 'success' }"
-
-          />
-        </RouterLink>
-        </div>
+        <router-link
+          v-for="user in users"
+          :key="user.id"
+          :to="`/landing-pages/profiledetails/user-portfolio/${user.id}`"
+          class="col-lg-3 col-sm-6 my-card"
+        >
+          <div class="my-image">
+              <img :src="user.get_image" />
+          </div>
+          <div class="article-title">{{ user.name }}</div>
+          <p>{{ user.position }}</p>
+        </router-link>
       </div>
 
     </div>
   </section>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      users: [],
+    };
+  },
+  mounted() {
+    this.fetchUsers();
+  },
+  methods: {
+    fetchUsers() {
+      axios.get('/api/v1/user-portfolio/')
+        .then(response => {
+          this.users = response.data;
+        })
+        .catch(error => {
+          console.error('Error fetching users:', error);
+        });
+    },
+  },
+};
+</script>
+<style>
+
+.my-card {
+  padding: 40px 40px 60px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: aliceblue;
+  border-radius: 5px;
+
+  width: 400px; 
+  height: 380px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  cursor: pointer;
+  
+  overflow: hidden;
+  margin-left: auto;
+  margin: 15px 15px 35px;
+  margin-bottom: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+</style>

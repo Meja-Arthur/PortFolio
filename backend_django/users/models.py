@@ -68,6 +68,7 @@ class User(models.Model):
 
 
 class Article(models.Model):
+    
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=200)
     description = models.TextField( max_length=150,default='', blank=False, null=False)
@@ -75,6 +76,10 @@ class Article(models.Model):
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    
+    #By using the ForeignKey to associate a Specific user with the article that He or she has written 
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='articles', default=None, null=True)
+    
     
     
     def __str__(self):

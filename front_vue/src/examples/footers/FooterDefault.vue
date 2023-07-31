@@ -225,6 +225,7 @@ defineProps({
 	text-align: left;
 	font: bold 16px sans-serif;
 	padding: 55px 50px;
+  border-radius: 10px;
 }
 
 .footer-distributed .footer-left,

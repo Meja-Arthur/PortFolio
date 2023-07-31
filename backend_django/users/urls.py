@@ -14,6 +14,8 @@ class UUIDConverter:
 register_converter(UUIDConverter, 'uuid')
 
 urlpatterns = [
+    path('user-portfolio/', views.UserListView.as_view()),
+    path('user-portfolio/<uuid:pk>/', views.UserDetailsView.as_view()),
     path('latest-articles/', views.ArticleListView.as_view()),
     path('article/<uuid:pk>/', views.ArticleDetailsView.as_view()),
     path('article/<str:article_id>/download/', DownloadArticleView.as_view(), name='download_article'),

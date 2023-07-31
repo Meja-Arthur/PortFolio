@@ -1,10 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import PresentationView from "../views/Presentation/PresentationView.vue";
 import AboutView from "../views/LandingPages/AboutUs/AboutView.vue";
-import profile1 from "../views/LandingPages/Profile/profile1.vue"
-import profile2 from "../views/LandingPages/Profile/profile2.vue"
-import profile3 from "../views/LandingPages/Profile/profile3.vue"
-import profile4 from "../views/LandingPages/Profile/profile4.vue"
+
+import profileView from "../views/LandingPages/Profile/profileView.vue"
 import ArticleDetails from "../views/LandingPages/ArticleDetails/ArticleDetails.vue"
 
 import ContactView from "../views/LandingPages/ContactUs/ContactView.vue";
@@ -47,43 +45,26 @@ const router = createRouter({
     },
 
     {
+      path: "/landing-pages/articles",
+      name: "articles",
+      component: ArticleView,
+    },
+
+    {
       path: "/landing-pages/articledetails/article/:id",
       name: "article-details",
       component: ArticleDetails,
     },
 
-
-    {
-      path: "/landing-pages/profile-1",
-      name: "profile1",
-      component: profile1,
-    },
-    {
-      path: "/landing-pages/profile-2",
-      name: "profile2",
-      component: profile2,
-    },
-    {
-      path: "/landing-pages/profile-3",
-      name: "profile3",
-      component: profile3,
-    },
-    {
-      path: "/landing-pages/profile-4",
-      name: "profile4",
-      component: profile4,
-    },
-
-
-    {
-      path: "/landing-pages/articles",
-      name: "articles",
-      component: ArticleView,
-    },
     {
       path: "/landing-pages/our-team",
       name: "ourteam",
       component: OurTeamView,
+    },
+    {
+      path: "/landing-pages/profiledetails/user-portfolio/:id",
+      name: "profile",
+      component: profileView,
     },
 
     {
