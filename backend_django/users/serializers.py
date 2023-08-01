@@ -16,7 +16,13 @@ class ArticleSerializer(serializers.ModelSerializer):
             "get_thumbnail",
         )
         
+
+    
+        
 class UserSerializer(serializers.ModelSerializer):
+    articles = ArticleSerializer(many=True)  # Use the ArticleSerializer for the articles
+    # for this to work we must serialize it from the Article model since it is from the artcle model serilizer 
+
     class Meta:
         model = User
         fields = (
@@ -24,10 +30,8 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "name",
             "bio",
+            "articles",  # Include the 'articles' field
             "position",
             "get_image",
             "get_thumbnail",
         )
-
-        
-        

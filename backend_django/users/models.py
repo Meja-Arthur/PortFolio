@@ -29,6 +29,9 @@ class User(models.Model):
     def __str__(self) -> str:
         return self.name
     
+    def get_articles(self):
+        return Article.objects.filter(author=self)
+    
     def get_absolute_url(self):
         return f'/{self.slug}/'
     

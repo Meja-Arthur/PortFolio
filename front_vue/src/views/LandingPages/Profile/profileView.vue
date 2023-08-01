@@ -13,7 +13,7 @@
 
   <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
 
-    <section class="py-sm-7 py-5 position-relative">
+    <section class="py-sm-7 py-5 position-relative mb-5">
 
             <div class="container">
                 <div class="row">
@@ -59,6 +59,35 @@
                 </div>
             </div>
 
+    </section>
+
+    <section class="pb-10 position-relative bg-gradient-dark mx-n3 mt-10">
+      <div class="container">
+
+          <div class="row">
+            <div class="col-lg-6">
+              <h3 class="mb-5 text-white mt-5">Article written by {{ user.name }}</h3>
+            </div>
+          </div>
+
+          <div class="row">
+            <router-link 
+              v-for="article in user.articles" 
+              :key="article.id" 
+              :to="`/landing-pages/articledetails/article/${article.id}`" 
+              class="col-lg-3 col-sm-6 my-card"
+            >
+                <div class="my-image">
+                  <img :src="article.get_image" />
+                </div>
+
+                <div class="article-title">{{ article.title }}</div>
+                <p>{{ article.description  }}</p>
+              <!-- Display article information here -->
+
+            </router-link>
+          </div>
+      </div>
     </section>
 
     
