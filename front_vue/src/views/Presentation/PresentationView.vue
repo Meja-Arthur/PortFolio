@@ -81,17 +81,12 @@ onUnmounted(() => {
         <div class="row">
 
           <div class="col-lg-7 text-center mx-auto position-relative">
-
-
-
             <h1 class="text-white">
-              Welcome to ScribeHaven your trusted partner <span class="text-white" id="typed"></span>
+              Welcome to  <span class="text-white" id="typed"></span>
             </h1>
 
             <div id="typed-strings">
-              <p> 
-                in content writing and editing!</p>
-              
+              <p> ScribeHaven </p>
             </div>
 
 
