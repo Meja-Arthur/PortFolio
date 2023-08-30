@@ -3,19 +3,21 @@ from rest_framework import serializers
 from .models import Article, User
 
 class ArticleSerializer(serializers.ModelSerializer):
+    author_name = serializers.CharField(source='author.name', read_only=True)
+    
     class Meta:
-        model =Article
-        
+        model = Article
         fields = (
             "id",
             "title",
             "description",
             "content",
             "author",
+            "author_name",  # Include the new field here
             "get_image",
             "get_thumbnail",
         )
-        
+
 
     
         

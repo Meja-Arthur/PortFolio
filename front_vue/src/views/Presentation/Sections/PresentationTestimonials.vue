@@ -44,7 +44,7 @@ import DefaultReviewCard from "@/examples/cards/reviewCards/DefaultReviewCard.vu
 
       <hr class="horizontal dark my-5" />
       <div class="row">
-        <h2>Now we Rest</h2>
+        <h7>Something should be here</h7>
       </div>
 
     </div>
