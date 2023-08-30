@@ -14,18 +14,18 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 ms-lg-5">
-            <h4 class="text-white">Built by developer</h4>
-            <h1 class="text-white">ArthurKings Work</h1>
+            <h4 class="text-white">Something Good</h4>
+            <h5 class="text-white">and another something good</h5>
             <p class="lead text-white opacity-8">
               Some thing Owsome should be written here!!!!
             </p>
-            <a
+            <!-- <a
               href="https://www.creative-tim.com/learning-lab/vue/overview/material-kit/"
               class="text-white icon-move-right"
             >
               Read docs
               <i class="fas fa-arrow-right text-sm ms-1"></i>
-            </a>
+            </a> -->
           </div>
         </div>
       </div>
